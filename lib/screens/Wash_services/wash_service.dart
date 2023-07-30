@@ -22,50 +22,46 @@ class _WashServiceState extends State<WashService> {
   ];
   final List<Map<String, dynamic>> productsData = [
     {'imagePath': 'assets/Shirt.png', 'name': 'Product 1', 'price': 20.0},
-    {'imagePath': 'assets/T-Shirt.png', 'name': 'Product 2', 'price': 25.0},
-    {'imagePath': 'assets/T-Shirt.png', 'name': 'Product 2', 'price': 25.0},
-    {'imagePath': 'assets/T-Shirt.png', 'name': 'Product 2', 'price': 25.0},
-    {'imagePath': 'assets/T-Shirt.png', 'name': 'Product 2', 'price': 25.0},
-    {'imagePath': 'assets/T-Shirt.png', 'name': 'Product 2', 'price': 25.0},
-    // Add more map entries for additional products...
+    {'imagePath': 'assets/Shirt.png', 'name': 'Product 2', 'price': 25.0},
+    {'imagePath': 'assets/Shirt.png', 'name': 'Product 2', 'price': 25.0},
+    {'imagePath': 'assets/Shirt.png', 'name': 'Product 2', 'price': 25.0},
+    {'imagePath': 'assets/Shirt.png', 'name': 'Product 2', 'price': 25.0},
+    {'imagePath': 'assets/Shirt.png', 'name': 'Product 2', 'price': 25.0},
   ];
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
+        const SizedBox(height: 48.0),
         Container(
             height: 100.0,
             // padding: const EdgeInsets.only(bottom: 14.0, right: 8.0, left: 8.0),
-            decoration: BoxDecoration(color: Colors.white, boxShadow: [
-              BoxShadow(
-                  color: Colors.grey.withOpacity(0.8),
-                  spreadRadius: 2,
-                  blurRadius: 4)
-            ]),
+            decoration: BoxDecoration(),
             child: CategoryHeading(data: data)),
-        const SizedBox(height: 32),
-        SingleChildScrollView(
-          child: Container(
-            height: MediaQuery.of(context).size.height - 200,
-            child: SingleChildScrollView(
-                child: Column(
+        Container(
+          color: Constant.globalBg,
+          padding: const EdgeInsets.only(top: 16),
+          height: MediaQuery.of(context).size.height - 150,
+          child: SingleChildScrollView(
+              child: Container(
+            padding: EdgeInsets.only(left: 16, right: 16),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Align(
                   alignment: Alignment.bottomLeft,
                   child: HeadingSix(
                     headingSix: 'Mens',
-                    headingWeight: FontWeight.w600,
-                    heaingSize: 17.0,
-                    headingColor: Constant.fontColorGlobal,
+                    headingWeight: FontWeight.w500,
+                    heaingSize: 16.0,
+                    headingColor: Constant.globalFontCol,
                   ),
                 ),
-                Container(
-                    height: MediaQuery.of(context).size.height - 250,
-                    child: SingleChildScrollView(
-                        child: ProductCard(productsData: productsData))),
+                ProductCard(productsData: productsData)
               ],
-            )),
-          ),
+            ),
+          )),
         ),
         const SizedBox(height: 16),
       ],

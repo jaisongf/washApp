@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../config/constant.dart';
+
 class ProductCard extends StatefulWidget {
   final List<Map<String, dynamic>> productsData;
 
@@ -29,7 +31,9 @@ class _ProductCardState extends State<ProductCard> {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
+      physics: const NeverScrollableScrollPhysics(),
       shrinkWrap: true,
+      padding: const EdgeInsets.only(top: 8, bottom: 8),
       itemCount: (widget.productsData.length / 3).ceil(),
       itemBuilder: (context, rowIndex) {
         final startIndex = rowIndex * 3;
@@ -41,55 +45,61 @@ class _ProductCardState extends State<ProductCard> {
         return Row(
           children: rowProducts
               .map((product) => Expanded(
-                    child: Card(
-                      elevation: 4,
+                    child: Container(
+                      margin: EdgeInsets.only(right: 8, bottom: 8),
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(18.0)),
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             // Image
-                            Image.asset(
-                              product['imagePath'],
-                              height: 100,
-                              width: double.infinity,
-                              fit: BoxFit.cover,
+                            ClipRRect(
+                              borderRadius: BorderRadius.circular(20.0),
+                              child: Image.asset(
+                                product['imagePath'],
+                                height: 100,
+                                width: double.infinity,
+                                fit: BoxFit.cover,
+                              ),
                             ),
                             SizedBox(height: 10),
                             // Text (Product Name)
-                            Text(
-                              product['name'],
-                              style: TextStyle(
-                                  fontSize: 16, fontWeight: FontWeight.bold),
-                            ),
-                            SizedBox(height: 8),
+                            Text(product['name'],
+                                style: TextStyle(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w300,
+                                    color: Constant.globalFontCol)),
+                            SizedBox(height: 0),
                             // Text (Product Price)
                             Text(
                               'Price: \$${product['price']}',
                               style:
                                   TextStyle(fontSize: 14, color: Colors.grey),
                             ),
-                            SizedBox(height: 8),
-                            // Count with plus and minus buttons
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                IconButton(
-                                  onPressed: () {
-                                    // Implement decrementQuantity
-                                  },
-                                  icon: Icon(Icons.remove),
-                                ),
-                                Text(
-                                    '1'), // Replace '1' with the actual quantity
-                                IconButton(
-                                  onPressed: () {
-                                    // Implement incrementQuantity
-                                  },
-                                  icon: Icon(Icons.add),
-                                ),
-                              ],
-                            ),
+                            // SizedBox(height: 8),
+                            //
+                            // Row(
+                            //   mainAxisAlignment: MainAxisAlignment.center,
+                            //   children: [
+                            //     IconButton(
+                            //       onPressed: () {
+                            //         // Implement decrementQuantity
+                            //       },
+                            //       icon: Icon(Icons.remove),
+                            //     ),
+                            //     Text(
+                            //         '1'), // Replace '1' with the actual quantity
+                            //     IconButton(
+                            //       onPressed: () {
+                            //         // Implement incrementQuantity
+                            //       },
+                            //       icon: Icon(Icons.add),
+                            //     ),
+                            //   ],
+                            // ),
                           ],
                         ),
                       ),

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:wash/Business_Logic/home_page_bloc/home_screen_bloc.dart';
 
+import '../../config/constant.dart';
+import '../../splash_screen.dart';
 import '../Dashboard/dashboard_screen.dart';
 import '../Pick_up/pick_up.dart';
 import '../Wash_services/wash_service.dart';
@@ -16,8 +18,9 @@ List<BottomNavigationBarItem> bottomNavItems = const <BottomNavigationBarItem>[
 const List<Widget> bottomNavScreen = <Widget>[
   DashboardScreen(),
   PickUpScreen(),
-  WashService()
+  WashService(),
 ];
+const List<String> appBarTitles = ["Home", "Delivery", "Pickup"];
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -28,12 +31,29 @@ class HomeScreen extends StatelessWidget {
       listener: (context, state) {},
       builder: (context, state) {
         return Scaffold(
-          body: SingleChildScrollView(
-            child: Padding(
-              padding:
-                  const EdgeInsets.only(left: 16, right: 16, top: 8, bottom: 8),
-              child: Center(child: bottomNavScreen.elementAt(state.tabIndex)),
-            ),
+          primary: false,
+          extendBodyBehindAppBar: true,
+          backgroundColor: Constant.bgWhite,
+          appBar: AppBar(
+              backgroundColor: Colors.transparent,
+              title: Text(
+                appBarTitles[state.tabIndex],
+                style: TextStyle(
+                    fontSize: 15,
+                    color: Constant.globalFontCol,
+                    fontWeight: FontWeight.w600),
+              )),
+          body: Stack(
+            children: [
+              Positioned(
+                child: Image.asset(
+                  "assets/app_top_bg.png",
+                  fit: BoxFit.contain,
+                ),
+              ),
+              SingleChildScrollView(
+                  child: bottomNavScreen.elementAt(state.tabIndex)),
+            ],
           ),
           bottomNavigationBar: BottomNavigationBar(
             items: bottomNavItems,

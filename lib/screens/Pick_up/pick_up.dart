@@ -35,34 +35,64 @@ class _PickUpScreenState extends State<PickUpScreen> {
   ];
 
   Widget _customerDetails() {
-    return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-      GestureDetector(
-        onTap: () {
-          Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => CustomerDetailScreen(),
-              ));
-        },
-        child: HeadingSix(
-            headingSix: 'Kumar',
-            headingWeight: FontWeight.w600,
-            heaingSize: 16.0,
-            headingColor: Constant.fontColorGlobal),
-      ),
-      const SizedBox(height: 5.0),
-      HeadingSix(
-          headingSix: '+91 8016783929',
-          headingWeight: FontWeight.w400,
-          heaingSize: 14.0,
-          headingColor: Constant.fontColorGlobal),
-      const SizedBox(height: 2.0),
-      HeadingSix(
-          headingSix: '1234 NW Bobcat Lane, St. Robert, MO 65584-5678',
-          headingWeight: FontWeight.w400,
-          heaingSize: 14.0,
-          headingColor: Constant.fontColorGlobal),
-    ]);
+    return Container(
+        margin: const EdgeInsets.all(16.0),
+        height: 180.0,
+        width: MediaQuery.of(context).size.width,
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(18.0),
+            image: const DecorationImage(
+                image: AssetImage('assets/customer_card.png'),
+                fit: BoxFit.cover)),
+        child: Row(children: [
+          Container(width: 80.0),
+          Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                HeadingSix(
+                    headingSix: "Anand",
+                    headingColor: Constant.bgWhite,
+                    heaingSize: 22.0),
+                const SizedBox(height: 8.0),
+                Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Container(
+                          width: 24,
+                          height: 16,
+                          child: Image.asset("assets/location_white_ic.png",
+                              height: 16)),
+                      SizedBox(width: 8),
+                      Container(
+                          width: MediaQuery.of(context).size.width - 180.0,
+                          child: const HeadingSix(
+                              headingSix:
+                                  "Flat.no.501, ideal homes, madhura nagar, 500023",
+                              headingColor: Colors.white,
+                              heaingSize: 16.0))
+                    ]),
+                const SizedBox(height: 8.0),
+                Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Container(
+                          width: 24,
+                          height: 16,
+                          child: Image.asset("assets/call_white_ic.png",
+                              height: 16)),
+                      SizedBox(width: 8),
+                      Container(
+                          width: MediaQuery.of(context).size.width - 180.0,
+                          child: const HeadingSix(
+                              headingSix: "+91 8016783929",
+                              headingColor: Colors.white,
+                              heaingSize: 16.0))
+                    ])
+              ]),
+        ]));
   }
 
   Widget _categoriesWidget(List<Map<String, dynamic>> items) {
@@ -77,16 +107,21 @@ class _PickUpScreenState extends State<PickUpScreen> {
                     builder: (context) => OrderDetailScreen(item: item)));
           },
           child: Container(
-              padding: const EdgeInsets.all(8),
+              margin: const EdgeInsets.all(4.0),
+              padding: const EdgeInsets.only(left: 8, right: 8, bottom: 8),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(18.0),
+              ),
               child: Column(children: [
                 Image.asset(item['imagePath'], height: 80, width: 80),
-                const SizedBox(height: 8),
+                const SizedBox(height: 4),
                 Text(
                   item['title'],
                   style: TextStyle(
                       fontSize: 15,
-                      fontWeight: FontWeight.w600,
-                      color: Constant.fontColorBlack),
+                      fontWeight: FontWeight.w500,
+                      color: Constant.globalFontCol),
                 ),
               ])),
         )),
@@ -99,42 +134,47 @@ class _PickUpScreenState extends State<PickUpScreen> {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          // CustomAppBar(title: "More", backArrow: true),
-          Align(
-            alignment: Alignment.topLeft,
-            child: HeadingSix(
-              headingSix: 'Customer Details',
-              headingWeight: FontWeight.w600,
-              heaingSize: 17.0,
-              headingColor: Constant.fontColorBlack,
-            ),
-          ),
-          const SizedBox(height: 16),
-          _customerDetails(),
-          const SizedBox(height: 32),
-          Align(
-              alignment: Alignment.topLeft,
-              child: HeadingSix(
-                headingSix: 'Categories',
-                headingWeight: FontWeight.w600,
-                heaingSize: 17.0,
-                headingColor: Constant.fontColorBlack,
-              )),
-          const SizedBox(height: 16),
+          const SizedBox(height: 48.0),
+          InkWell(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => CustomerDetailScreen()),
+                );
+              },
+              child: _customerDetails()),
+          const SizedBox(height: 8),
           Container(
-            child: ListView.builder(
-                shrinkWrap: true,
-                itemCount: (items.length / 3).ceil(),
-                itemBuilder: (context, index) {
-                  int startIndex = index * 3;
-                  int endIndex = (startIndex + 3 <= items.length)
-                      ? startIndex + 3
-                      : items.length;
-                  List<Map<String, dynamic>> currentItems =
-                      items.sublist(startIndex, endIndex);
+            color: Constant.globalBg,
+            padding:
+                const EdgeInsets.only(left: 16, right: 16, bottom: 32, top: 16),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                HeadingSix(
+                    headingSix: 'Categories',
+                    headingWeight: FontWeight.w500,
+                    heaingSize: 17.0,
+                    headingColor: Constant.fontColorBlack),
+                const SizedBox(height: 12.0),
+                ListView.builder(
+                    physics: const NeverScrollableScrollPhysics(),
+                    shrinkWrap: true,
+                    padding: EdgeInsets.zero,
+                    itemCount: (items.length / 3).ceil(),
+                    itemBuilder: (context, index) {
+                      int startIndex = index * 3;
+                      int endIndex = (startIndex + 3 <= items.length)
+                          ? startIndex + 3
+                          : items.length;
+                      List<Map<String, dynamic>> currentItems =
+                          items.sublist(startIndex, endIndex);
 
-                  return _categoriesWidget(currentItems);
-                }),
+                      return _categoriesWidget(currentItems);
+                    }),
+              ],
+            ),
           )
         ]);
   }

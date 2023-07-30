@@ -16,6 +16,8 @@ class HeadingSix extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(headingSix!,
+        maxLines: 2,
+        overflow: TextOverflow.ellipsis,
         style: Theme.of(context).textTheme.bodyText1!.copyWith(
               fontWeight: headingWeight,
               fontSize: heaingSize,

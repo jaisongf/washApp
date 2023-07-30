@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:wash/Routes/generator_routes.dart';
 
+import 'config/constant.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -15,6 +17,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
+        textTheme: Constant.textTheme,
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),

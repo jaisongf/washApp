@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class Constant {
   static String? homeTitle1 = "Pending Sauda";
@@ -6,7 +7,21 @@ class Constant {
   static String? homeTitle3 = "Due's";
   static Color? fontColorGlobal = const Color(0xff183264);
   static Color? fontColorBlack = const Color(0xff000000);
-  static Color? bgWhite = Colors.white;
+  static Color? bgWhite = const Color.fromRGBO(255, 255, 255, 1);
+  static final TextTheme textTheme = GoogleFonts.interTextTheme();
+  static const TextStyle interTextStyle = TextStyle(fontFamily: 'Inter');
+  static Color? globalBg = const Color(0xFFEEFCFF);
+  static Color? statusBgBlue = const Color(0xFF12A5BC);
+  static Color? statusBgBlueLine = const Color(0xFFBBF0F8);
+  static Color? statusBgVol = const Color(0xFF715990);
+  static Color? statusBgVolLine = const Color(0xFFF4EBFF);
+  static Color? globalFontCol = const Color(0xFF28292C);
+  static Color? globalFontColDull = const Color(0xFF939495);
+  static Color? dashBoardLabelBg = const Color(0xFF003145);
+  static Color? customBrowcol = const Color(0xFFF5ECE5);
+  static Color? customBrowFoncol = const Color(0xFF9F4200);
+  static Color? customcoun = const Color(0xFF95B0B6);
+  static Color? customcoun1 = const Color(0xFFEEE8A9);
 
   static Image? bgImgGlobal =
       Image.asset("assets/images/all_bg.png", fit: BoxFit.contain);
