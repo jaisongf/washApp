@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:wash/Routes/generator_routes.dart';
 
 import 'config/constant.dart';
@@ -13,8 +14,11 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark.copyWith(
+      statusBarIconBrightness: Brightness.dark,
+    ));
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Wash App',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         textTheme: Constant.textTheme,
@@ -22,7 +26,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       initialRoute: '/',
-      onGenerateRoute: RouteGenerator().generateRoute,
+      onGenerateRoute: RouteGenerator.generateRoute,
     );
   }
 }

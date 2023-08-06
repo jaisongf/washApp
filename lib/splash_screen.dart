@@ -12,8 +12,18 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Constant.colorBlack,
+    Future.delayed(Duration(seconds: 2), () {
+      Navigator.of(context).pushReplacementNamed('/login');
+    });
+    return Stack(
+      children: [
+        Positioned.fill(
+          child: Image.asset(
+            'assets/splash_screen_bg.png',
+            fit: BoxFit.cover,
+          ),
+        ),
+      ],
     );
   }
 }

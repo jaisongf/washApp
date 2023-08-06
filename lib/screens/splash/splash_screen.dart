@@ -10,6 +10,13 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    Future.delayed(Duration(seconds: 2), () {
+      Navigator.of(context).pushReplacementNamed('/login');
+    });
+    return Scaffold(
+      body: Container(
+        child: Text("Splash"),
+      ),
+    );
   }
 }

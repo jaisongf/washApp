@@ -15,6 +15,13 @@ class PickUpScreen extends StatefulWidget {
 }
 
 class _PickUpScreenState extends State<PickUpScreen> {
+  bool _isBottomSheetOpen = false;
+  void _toggleBottomSheet() {
+    setState(() {
+      _isBottomSheetOpen = !_isBottomSheetOpen;
+    });
+  }
+
   List<Map<String, dynamic>> cardDatawo = [
     {
       'heading': 'Kumar',
@@ -106,24 +113,26 @@ class _PickUpScreenState extends State<PickUpScreen> {
                 MaterialPageRoute(
                     builder: (context) => OrderDetailScreen(item: item)));
           },
-          child: Container(
-              margin: const EdgeInsets.all(4.0),
-              padding: const EdgeInsets.only(left: 8, right: 8, bottom: 8),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(18.0),
-              ),
-              child: Column(children: [
-                Image.asset(item['imagePath'], height: 80, width: 80),
-                const SizedBox(height: 4),
-                Text(
-                  item['title'],
-                  style: TextStyle(
-                      fontSize: 15,
-                      fontWeight: FontWeight.w500,
-                      color: Constant.globalFontCol),
+          child: GestureDetector(
+            child: Container(
+                margin: const EdgeInsets.all(4.0),
+                padding: const EdgeInsets.only(left: 8, right: 8, bottom: 8),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(18.0),
                 ),
-              ])),
+                child: Column(children: [
+                  Image.asset(item['imagePath'], height: 80, width: 80),
+                  const SizedBox(height: 4),
+                  Text(
+                    item['title'],
+                    style: TextStyle(
+                        fontSize: 15,
+                        fontWeight: FontWeight.w500,
+                        color: Constant.globalFontCol),
+                  ),
+                ])),
+          ),
         )),
     ]);
   }

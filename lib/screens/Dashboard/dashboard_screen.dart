@@ -147,7 +147,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
     );
   }
 
-  Widget _statusCompleted(String? heading, String? avatar, String? status) {
+  Widget _statusCompleted(String? heading, String? avatar) {
     return Container(
       margin: const EdgeInsets.only(right: 8.0),
       width: 120.0,
@@ -164,10 +164,6 @@ class _DashboardScreenState extends State<DashboardScreen> {
               headingWeight: FontWeight.w500),
           const SizedBox(height: 8.0),
           Image.asset(avatar!, width: 40, height: 40),
-          Align(
-            alignment: Alignment.bottomRight,
-            child: Image.asset(status!, width: 20, height: 20),
-          )
         ],
       ),
     );
@@ -264,6 +260,47 @@ class _DashboardScreenState extends State<DashboardScreen> {
         children: [
           const SizedBox(height: 48.0),
           Container(
+            padding: EdgeInsets.only(left: 16, right: 16),
+            child: Row(children: [
+              Container(
+                child: Image.asset("assets/avatar.png"),
+                height: 65,
+              ),
+              Expanded(
+                  child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  CommonLabel(
+                      name: "Good Morning!",
+                      fontSize: 18.0,
+                      fontWeight: FontWeight.w600,
+                      bgColor: Colors.transparent,
+                      fontColor: Constant.globalFontCol,
+                      labelRadiusBig: 4,
+                      labelRadiusSmall: 4),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        child: CommonLabel(
+                            name: "John, Today’s jobs...",
+                            fontSize: 24.0,
+                            fontWeight: FontWeight.w600,
+                            bgColor: Colors.transparent,
+                            fontColor: Constant.globalFontCol,
+                            labelRadiusBig: 4,
+                            labelRadiusSmall: 4),
+                      ),
+                    ],
+                  )
+                ],
+              ))
+            ]),
+          ),
+          SizedBox(height: 10.0),
+          Container(
               margin: const EdgeInsets.only(left: 14, right: 14),
               child: Row(children: [
                 Expanded(
@@ -290,7 +327,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
           Container(
               color: Constant.globalBg,
               padding: const EdgeInsets.only(top: 16),
-              height: MediaQuery.of(context).size.height - 250,
+              height: MediaQuery.of(context).size.height - 350,
               child: SingleChildScrollView(
                   child: Column(
                 children: [
@@ -331,7 +368,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                   ]),
                   SizedBox(height: 8.0),
                   Container(
-                    height: 145,
+                    height: 125,
                     padding: const EdgeInsets.only(left: 16.0),
                     child: ListView.builder(
                         scrollDirection: Axis.horizontal,
@@ -341,7 +378,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                           final Map<String, String> data =
                               deliveryStatus[index];
                           return _statusCompleted(
-                              data['heading'], data['avatar'], data['status']);
+                              data['heading'], data['avatar']);
                         }),
                   ),
                   const SizedBox(height: 24)

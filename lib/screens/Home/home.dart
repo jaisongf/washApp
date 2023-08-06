@@ -15,58 +15,69 @@ List<BottomNavigationBarItem> bottomNavItems = const <BottomNavigationBarItem>[
   BottomNavigationBarItem(icon: Icon(Icons.add_box_outlined), label: "Pickup"),
 ];
 
-const List<Widget> bottomNavScreen = <Widget>[
+List<Widget> bottomNavScreen = <Widget>[
   DashboardScreen(),
   PickUpScreen(),
   WashService(),
 ];
 const List<String> appBarTitles = ["Home", "Delivery", "Pickup"];
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
   @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  int _currentIndex = 0;
+  void _onBottomNavItemTapped(int index) {
+    setState(() {
+      _currentIndex = index;
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return BlocConsumer<HomeScreenBloc, HomeScreenState>(
-      listener: (context, state) {},
-      builder: (context, state) {
-        return Scaffold(
-          primary: false,
-          extendBodyBehindAppBar: true,
-          backgroundColor: Constant.bgWhite,
-          appBar: AppBar(
-              backgroundColor: Colors.transparent,
+    return Scaffold(
+      primary: false,
+      extendBodyBehindAppBar: true,
+      backgroundColor: Constant.bgWhite,
+      appBar: _currentIndex != 0
+          ? AppBar(
+              automaticallyImplyLeading: false,
+              backgroundColor: Colors.white,
               title: Text(
-                appBarTitles[state.tabIndex],
+                appBarTitles[_currentIndex],
                 style: TextStyle(
-                    fontSize: 15,
+                    fontSize: 16,
                     color: Constant.globalFontCol,
                     fontWeight: FontWeight.w600),
-              )),
-          body: Stack(
-            children: [
-              Positioned(
-                child: Image.asset(
-                  "assets/app_top_bg.png",
-                  fit: BoxFit.contain,
-                ),
-              ),
-              SingleChildScrollView(
-                  child: bottomNavScreen.elementAt(state.tabIndex)),
-            ],
+              ))
+          : null,
+      body: Stack(
+        children: [
+          SizedBox(height: 48),
+          Positioned(
+            child: Image.asset(
+              "assets/app_top_bg.png",
+              fit: BoxFit.contain,
+            ),
           ),
-          bottomNavigationBar: BottomNavigationBar(
-            items: bottomNavItems,
-            currentIndex: state.tabIndex,
-            selectedItemColor: Theme.of(context).colorScheme.primary,
-            unselectedItemColor: Colors.grey,
-            onTap: (index) {
-              BlocProvider.of<HomeScreenBloc>(context)
-                  .add(TabChange(tabIndex: index));
-            },
-          ),
-        );
-      },
+          if (_currentIndex == 0) DashboardScreen(),
+          if (_currentIndex == 1) PickUpScreen(),
+          if (_currentIndex == 2) WashService(),
+          // SingleChildScrollView(
+          //     child: bottomNavScreen.elementAt(state.tabIndex)),
+        ],
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _currentIndex,
+        onTap: _onBottomNavItemTapped,
+        items: bottomNavItems,
+        selectedItemColor: Theme.of(context).colorScheme.primary,
+        unselectedItemColor: Colors.grey,
+      ),
     );
   }
 }
