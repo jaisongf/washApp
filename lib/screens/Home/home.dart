@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:wash/Business_Logic/home_page_bloc/home_screen_bloc.dart';
 
 import '../../config/constant.dart';
-import '../../splash_screen.dart';
 import '../Dashboard/dashboard_screen.dart';
 import '../Pick_up/pick_up.dart';
 import '../Profile/profile.dart';
@@ -23,7 +20,7 @@ List<Widget> bottomNavScreen = <Widget>[
   WashService(),
   ProfileScreen()
 ];
-const List<String> appBarTitles = ["Home", "Delivery", "Pickup"];
+const List<String> appBarTitles = ["Home", "Delivery", "Pickup", "John"];
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -49,7 +46,7 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: _currentIndex != 0
           ? AppBar(
               automaticallyImplyLeading: false,
-              backgroundColor: Colors.white,
+              backgroundColor: Colors.transparent,
               title: Text(
                 appBarTitles[_currentIndex],
                 style: TextStyle(

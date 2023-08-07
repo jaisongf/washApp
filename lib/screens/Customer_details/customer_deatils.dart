@@ -137,6 +137,13 @@ class _CustomerDetailScreenState extends State<CustomerDetailScreen> {
                                       headingColor: Constant.globalFontCol,
                                       heaingSize: 14,
                                       headingWeight: FontWeight.w600),
+                                ),
+                                IconButton(
+                                  icon: const Icon(Icons.delete),
+                                  iconSize: 20.0,
+                                  onPressed: () {
+                                    // Handle action
+                                  },
                                 )
                               ],
                             ),
