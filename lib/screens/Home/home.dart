@@ -6,6 +6,7 @@ import '../../config/constant.dart';
 import '../../splash_screen.dart';
 import '../Dashboard/dashboard_screen.dart';
 import '../Pick_up/pick_up.dart';
+import '../Profile/profile.dart';
 import '../Wash_services/wash_service.dart';
 
 List<BottomNavigationBarItem> bottomNavItems = const <BottomNavigationBarItem>[
@@ -13,12 +14,14 @@ List<BottomNavigationBarItem> bottomNavItems = const <BottomNavigationBarItem>[
   BottomNavigationBarItem(
       icon: Icon(Icons.local_shipping_outlined), label: "Delivery"),
   BottomNavigationBarItem(icon: Icon(Icons.add_box_outlined), label: "Pickup"),
+  BottomNavigationBarItem(icon: Icon(Icons.account_circle), label: "John"),
 ];
 
 List<Widget> bottomNavScreen = <Widget>[
   DashboardScreen(),
   PickUpScreen(),
   WashService(),
+  ProfileScreen()
 ];
 const List<String> appBarTitles = ["Home", "Delivery", "Pickup"];
 
@@ -53,7 +56,18 @@ class _HomeScreenState extends State<HomeScreen> {
                     fontSize: 16,
                     color: Constant.globalFontCol,
                     fontWeight: FontWeight.w600),
-              ))
+              ),
+              actions: _currentIndex == 1
+                  ? [
+                      IconButton(
+                        icon: Image.asset("assets/bag.png"),
+                        onPressed: () {
+                          // Handle action
+                        },
+                      )
+                    ]
+                  : null,
+            )
           : null,
       body: Stack(
         children: [
@@ -67,6 +81,7 @@ class _HomeScreenState extends State<HomeScreen> {
           if (_currentIndex == 0) DashboardScreen(),
           if (_currentIndex == 1) PickUpScreen(),
           if (_currentIndex == 2) WashService(),
+          if (_currentIndex == 3) ProfileScreen(),
           // SingleChildScrollView(
           //     child: bottomNavScreen.elementAt(state.tabIndex)),
         ],

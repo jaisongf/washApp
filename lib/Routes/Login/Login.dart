@@ -94,7 +94,6 @@ class LoginPage extends StatelessWidget {
               buttonHeight: 54,
               buttonRadiusTL: 8.0,
               buttonRadiusBL: 8.0,
-              buttonNameSize: 16.0,
               buttonBorder: Colors.transparent,
               buttonFunction: () {
                 Navigator.pushReplacement(
