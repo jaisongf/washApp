@@ -6,6 +6,7 @@ import '../../Widgets/custom_appbar.dart';
 import '../../Widgets/heading_six.dart';
 import '../Customer_details/customer_deatils.dart';
 import '../Order_details/order_details.dart';
+import '../Wash_services/wash_service.dart';
 
 class PickUpScreen extends StatefulWidget {
   const PickUpScreen({Key? key}) : super(key: key);
@@ -108,10 +109,8 @@ class _PickUpScreenState extends State<PickUpScreen> {
         Expanded(
             child: GestureDetector(
           onTap: () {
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => OrderDetailScreen(item: item)));
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => const WashService()));
           },
           child: GestureDetector(
             child: Container(
@@ -143,7 +142,7 @@ class _PickUpScreenState extends State<PickUpScreen> {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          const SizedBox(height: 48.0),
+          const SizedBox(height: 64.0),
           InkWell(
               onTap: () {
                 Navigator.push(
@@ -158,31 +157,34 @@ class _PickUpScreenState extends State<PickUpScreen> {
             color: Constant.globalBg,
             padding:
                 const EdgeInsets.only(left: 16, right: 16, bottom: 32, top: 16),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                HeadingSix(
-                    headingSix: 'Categories',
-                    headingWeight: FontWeight.w500,
-                    heaingSize: 17.0,
-                    headingColor: Constant.fontColorBlack),
-                const SizedBox(height: 12.0),
-                ListView.builder(
-                    physics: const NeverScrollableScrollPhysics(),
-                    shrinkWrap: true,
-                    padding: EdgeInsets.zero,
-                    itemCount: (items.length / 3).ceil(),
-                    itemBuilder: (context, index) {
-                      int startIndex = index * 3;
-                      int endIndex = (startIndex + 3 <= items.length)
-                          ? startIndex + 3
-                          : items.length;
-                      List<Map<String, dynamic>> currentItems =
-                          items.sublist(startIndex, endIndex);
+            height: MediaQuery.of(context).size.height - 345,
+            child: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  HeadingSix(
+                      headingSix: 'Categories',
+                      headingWeight: FontWeight.w500,
+                      heaingSize: 17.0,
+                      headingColor: Constant.fontColorBlack),
+                  const SizedBox(height: 12.0),
+                  ListView.builder(
+                      physics: const NeverScrollableScrollPhysics(),
+                      shrinkWrap: true,
+                      padding: EdgeInsets.zero,
+                      itemCount: (items.length / 3).ceil(),
+                      itemBuilder: (context, index) {
+                        int startIndex = index * 3;
+                        int endIndex = (startIndex + 3 <= items.length)
+                            ? startIndex + 3
+                            : items.length;
+                        List<Map<String, dynamic>> currentItems =
+                            items.sublist(startIndex, endIndex);
 
-                      return _categoriesWidget(currentItems);
-                    }),
-              ],
+                        return _categoriesWidget(currentItems);
+                      }),
+                ],
+              ),
             ),
           )
         ]);

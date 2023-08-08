@@ -258,7 +258,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const SizedBox(height: 48.0),
+          const SizedBox(height: 64.0),
           Container(
             padding: EdgeInsets.only(left: 16, right: 16),
             child: Row(children: [
@@ -272,7 +272,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   CommonLabel(
-                      name: "Good Morning!",
+                      name: "Good Morning!, John",
                       fontSize: 18.0,
                       fontWeight: FontWeight.w600,
                       bgColor: Colors.transparent,
@@ -285,7 +285,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                     children: [
                       Container(
                         child: CommonLabel(
-                            name: "John, Today’s jobs...",
+                            name: "Today’s Jobs",
                             fontSize: 24.0,
                             fontWeight: FontWeight.w600,
                             bgColor: Colors.transparent,
@@ -327,7 +327,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
           Container(
               color: Constant.globalBg,
               padding: const EdgeInsets.only(top: 16),
-              height: MediaQuery.of(context).size.height - 350,
+              height: MediaQuery.of(context).size.height - 360,
               child: SingleChildScrollView(
                   child: Column(
                 children: [

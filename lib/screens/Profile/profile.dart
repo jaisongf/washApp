@@ -50,8 +50,7 @@ class ProfileScreen extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          const SizedBox(height: 48.0),
-          Container(child: Text("data")),
+          const SizedBox(height: 64.0),
           const SizedBox(height: 8),
           Container(
               color: Constant.globalBg,

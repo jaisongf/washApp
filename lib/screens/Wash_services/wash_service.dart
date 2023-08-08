@@ -194,42 +194,67 @@ class _WashServiceState extends State<WashService> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        const SizedBox(height: 48.0),
-        Container(
-            height: 100.0,
-            // padding: const EdgeInsets.only(bottom: 14.0, right: 8.0, left: 8.0),
-            decoration: BoxDecoration(),
-            child: CategoryHeading(data: data)),
-        Container(
-          color: Constant.globalBg,
-          padding: const EdgeInsets.only(top: 16),
-          height: MediaQuery.of(context).size.height - 350,
-          child: SingleChildScrollView(
-              child: Container(
-            padding: EdgeInsets.only(left: 16, right: 16),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Align(
-                  alignment: Alignment.bottomLeft,
-                  child: HeadingSix(
-                    headingSix: 'Mens',
-                    headingWeight: FontWeight.w500,
-                    heaingSize: 16.0,
-                    headingColor: Constant.globalFontCol,
-                  ),
-                ),
-                productBlocks()
-                // ProductCard(productsData: productsData)
-              ],
-            ),
-          )),
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        title: Text(
+          "Services",
+          style: TextStyle(
+              fontSize: 16,
+              color: Constant.globalFontCol,
+              fontWeight: FontWeight.w600),
         ),
-        const SizedBox(height: 16),
-      ],
+      ),
+      body: Stack(
+        children: [
+          SizedBox(height: 48),
+          Positioned(
+            child: Image.asset(
+              "assets/app_top_bg.png",
+              fit: BoxFit.contain,
+            ),
+          ),
+          Column(
+            children: [
+              const SizedBox(height: 48.0),
+              Container(
+                  height: 100.0,
+                  // padding: const EdgeInsets.only(bottom: 14.0, right: 8.0, left: 8.0),
+                  decoration: BoxDecoration(),
+                  child: CategoryHeading(data: data)),
+              Container(
+                color: Constant.globalBg,
+                padding: const EdgeInsets.only(top: 16),
+                height: MediaQuery.of(context).size.height - 350,
+                child: SingleChildScrollView(
+                    child: Container(
+                  padding: EdgeInsets.only(left: 16, right: 16),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Align(
+                        alignment: Alignment.bottomLeft,
+                        child: HeadingSix(
+                          headingSix: 'Mens',
+                          headingWeight: FontWeight.w500,
+                          heaingSize: 16.0,
+                          headingColor: Constant.globalFontCol,
+                        ),
+                      ),
+                      productBlocks()
+                      // ProductCard(productsData: productsData)
+                    ],
+                  ),
+                )),
+              ),
+              const SizedBox(height: 16),
+            ],
+          ),
+          // SingleChildScrollView(
+          //     child: bottomNavScreen.elementAt(state.tabIndex)),
+        ],
+      ),
     );
   }
 }

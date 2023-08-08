@@ -14,6 +14,7 @@ class LoginPage extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
+          const SizedBox(height: 64.0),
           CommonLabel(
               name: "Login to",
               fontSize: 20.0,
@@ -94,6 +95,7 @@ class LoginPage extends StatelessWidget {
               buttonHeight: 54,
               buttonRadiusTL: 8.0,
               buttonRadiusBL: 8.0,
+              buttonNameSize: 16.0,
               buttonBorder: Colors.transparent,
               buttonFunction: () {
                 Navigator.pushReplacement(
