@@ -41,18 +41,7 @@ class _CustomerDetailScreenState extends State<CustomerDetailScreen> {
                   fontSize: 15,
                   color: Constant.globalFontCol,
                   fontWeight: FontWeight.w600),
-            ),
-            actions: [
-              IconButton(
-                icon: const Icon(
-                  Icons.qr_code_scanner,
-                  size: 22.0,
-                ),
-                onPressed: () {
-                  // Implement your search functionality here
-                },
-              )
-            ]),
+            )),
         body: Stack(
           children: [
             Positioned(
@@ -89,7 +78,7 @@ class _CustomerDetailScreenState extends State<CustomerDetailScreen> {
                                         size: 14),
                                     const SizedBox(width: 8.0),
                                     CommonLabel(
-                                        name: "501, street name, Hyd - 600878",
+                                        name: "501, Street name, HYD",
                                         fontSize: 14.0,
                                         fontWeight: FontWeight.w500,
                                         bgColor: Colors.transparent,
@@ -156,52 +145,7 @@ class _CustomerDetailScreenState extends State<CustomerDetailScreen> {
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
                                     HeadingSix(
-                                        headingSix: "Shirt",
-                                        headingColor: Constant.globalFontCol,
-                                        heaingSize: 16,
-                                        headingWeight: FontWeight.w600),
-                                    HeadingSix(
-                                        headingSix: "1 Units = ₹50",
-                                        headingColor:
-                                            Constant.globalFontColDull,
-                                        heaingSize: 13,
-                                        headingWeight: FontWeight.w500),
-                                  ],
-                                )),
-                                Container(
-                                  child: HeadingSix(
-                                      headingSix: "100",
-                                      headingColor: Constant.globalFontCol,
-                                      heaingSize: 14,
-                                      headingWeight: FontWeight.w600),
-                                )
-                              ],
-                            ),
-                          ),
-                          const SizedBox(height: 4),
-                          Container(
-                            padding: const EdgeInsets.only(
-                                top: 12, bottom: 12, left: 16, right: 16),
-                            decoration: BoxDecoration(
-                                color: Constant.bgWhite,
-                                borderRadius: BorderRadius.circular(8.0)),
-                            child: Row(
-                              children: [
-                                CircleAvatar(
-                                    backgroundColor: Constant.customcoun,
-                                    radius: 20.0,
-                                    child: Text(
-                                      "2",
-                                      style: TextStyle(color: Constant.bgWhite),
-                                    )),
-                                SizedBox(width: 16),
-                                Expanded(
-                                    child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    HeadingSix(
-                                        headingSix: "Trousers",
+                                        headingSix: "Saree",
                                         headingColor: Constant.globalFontCol,
                                         heaingSize: 16,
                                         headingWeight: FontWeight.w600),
@@ -220,6 +164,13 @@ class _CustomerDetailScreenState extends State<CustomerDetailScreen> {
                                       heaingSize: 14,
                                       headingWeight: FontWeight.w600),
                                 ),
+                                IconButton(
+                                  icon: const Icon(Icons.delete),
+                                  iconSize: 20.0,
+                                  onPressed: () {
+                                    // Handle action
+                                  },
+                                )
                               ],
                             ),
                           ),
@@ -265,6 +216,65 @@ class _CustomerDetailScreenState extends State<CustomerDetailScreen> {
                                       heaingSize: 14,
                                       headingWeight: FontWeight.w600),
                                 ),
+                                IconButton(
+                                  icon: const Icon(Icons.delete),
+                                  iconSize: 20.0,
+                                  onPressed: () {
+                                    // Handle action
+                                  },
+                                )
+                              ],
+                            ),
+                          ),
+                          const SizedBox(height: 4),
+                          Container(
+                            padding: const EdgeInsets.only(
+                                top: 12, bottom: 12, left: 16, right: 16),
+                            decoration: BoxDecoration(
+                                color: Constant.bgWhite,
+                                borderRadius: BorderRadius.circular(8.0)),
+                            child: Row(
+                              children: [
+                                CircleAvatar(
+                                    backgroundColor: Constant.customcoun,
+                                    radius: 20.0,
+                                    child: Text(
+                                      "2",
+                                      style: TextStyle(color: Constant.bgWhite),
+                                    )),
+                                SizedBox(width: 16),
+                                Expanded(
+                                    child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    HeadingSix(
+                                        headingSix: "Saree",
+                                        headingColor: Constant.globalFontCol,
+                                        heaingSize: 16,
+                                        headingWeight: FontWeight.w600),
+                                    HeadingSix(
+                                        headingSix: "1 Units = ₹50",
+                                        headingColor:
+                                            Constant.globalFontColDull,
+                                        heaingSize: 13,
+                                        headingWeight: FontWeight.w500),
+                                  ],
+                                )),
+                                Container(
+                                  child: HeadingSix(
+                                      headingSix: "100",
+                                      headingColor: Constant.globalFontCol,
+                                      heaingSize: 14,
+                                      headingWeight: FontWeight.w600),
+                                ),
+                                IconButton(
+                                  icon: const Icon(Icons.delete),
+                                  iconSize: 20.0,
+                                  onPressed: () {
+                                    // Handle action
+                                  },
+                                )
                               ],
                             ),
                           ),

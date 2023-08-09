@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:wash/config/constant.dart';
+import 'package:wash/screens/Pick_up/pick_up_item_list.dart';
 
 import '../../Widgets/card_container.dart';
 import '../../Widgets/custom_appbar.dart';
@@ -138,55 +139,92 @@ class _PickUpScreenState extends State<PickUpScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          const SizedBox(height: 64.0),
-          InkWell(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => CustomerDetailScreen()),
-                );
-              },
-              child: _customerDetails()),
-          const SizedBox(height: 8),
-          Container(
-            color: Constant.globalBg,
-            padding:
-                const EdgeInsets.only(left: 16, right: 16, bottom: 32, top: 16),
-            height: MediaQuery.of(context).size.height - 345,
-            child: SingleChildScrollView(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  HeadingSix(
-                      headingSix: 'Categories',
-                      headingWeight: FontWeight.w500,
-                      heaingSize: 17.0,
-                      headingColor: Constant.fontColorBlack),
-                  const SizedBox(height: 12.0),
-                  ListView.builder(
-                      physics: const NeverScrollableScrollPhysics(),
-                      shrinkWrap: true,
-                      padding: EdgeInsets.zero,
-                      itemCount: (items.length / 3).ceil(),
-                      itemBuilder: (context, index) {
-                        int startIndex = index * 3;
-                        int endIndex = (startIndex + 3 <= items.length)
-                            ? startIndex + 3
-                            : items.length;
-                        List<Map<String, dynamic>> currentItems =
-                            items.sublist(startIndex, endIndex);
-
-                        return _categoriesWidget(currentItems);
-                      }),
-                ],
+    return Scaffold(
+      primary: false,
+      extendBodyBehindAppBar: true,
+      backgroundColor: Constant.bgWhite,
+      appBar: AppBar(
+          backgroundColor: Colors.transparent,
+          title: Text(
+            "Categories",
+            style: TextStyle(
+                fontSize: 15,
+                color: Constant.globalFontCol,
+                fontWeight: FontWeight.w600),
+          ),
+          actions: [
+            IconButton(
+              icon: Icon(
+                Icons.local_mall,
+                size: 22.0,
+                color: Constant.globalFontCol,
               ),
+              onPressed: () {
+                Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => PickUpItemList()));
+              },
+            )
+          ]),
+      body: Stack(
+        children: [
+          Positioned(
+            child: Image.asset(
+              "assets/app_top_bg.png",
+              fit: BoxFit.contain,
             ),
-          )
-        ]);
+          ),
+          Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                const SizedBox(height: 64.0),
+                InkWell(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => CustomerDetailScreen()),
+                      );
+                    },
+                    child: _customerDetails()),
+                const SizedBox(height: 8),
+                Container(
+                  color: Constant.globalBg,
+                  padding: const EdgeInsets.only(
+                      left: 16, right: 16, bottom: 32, top: 16),
+                  height: MediaQuery.of(context).size.height - 345,
+                  child: SingleChildScrollView(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        // HeadingSix(
+                        //     headingSix: 'Categories',
+                        //     headingWeight: FontWeight.w500,
+                        //     heaingSize: 17.0,
+                        //     headingColor: Constant.fontColorBlack),
+                        const SizedBox(height: 12.0),
+                        ListView.builder(
+                            physics: const NeverScrollableScrollPhysics(),
+                            shrinkWrap: true,
+                            padding: EdgeInsets.zero,
+                            itemCount: (items.length / 3).ceil(),
+                            itemBuilder: (context, index) {
+                              int startIndex = index * 3;
+                              int endIndex = (startIndex + 3 <= items.length)
+                                  ? startIndex + 3
+                                  : items.length;
+                              List<Map<String, dynamic>> currentItems =
+                                  items.sublist(startIndex, endIndex);
+
+                              return _categoriesWidget(currentItems);
+                            }),
+                      ],
+                    ),
+                  ),
+                )
+              ]),
+        ],
+      ),
+    );
   }
 }

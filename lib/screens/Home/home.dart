@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 
 import '../../config/constant.dart';
 import '../Customer_details/customer_deatils.dart';
+import '../Customer_details/delivery_list.dart';
 import '../Dashboard/dashboard_screen.dart';
 import '../Pick_up/pick_up.dart';
+import '../Pick_up/pick_up_list.dart';
 import '../Profile/profile.dart';
 import '../Wash_services/wash_service.dart';
 
@@ -55,7 +57,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     color: Constant.globalFontCol,
                     fontWeight: FontWeight.w600),
               ),
-              actions: _currentIndex == 1
+              actions: _currentIndex == 5
                   ? [
                       IconButton(
                         icon: Image.asset("assets/bag.png"),
@@ -77,8 +79,8 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
           if (_currentIndex == 0) DashboardScreen(),
-          if (_currentIndex == 1) CustomerDetailScreen(),
-          if (_currentIndex == 2) PickUpScreen(),
+          if (_currentIndex == 1) DeliveryList(),
+          if (_currentIndex == 2) PickUpList(),
           // if (_currentIndex == 2) WashService(),
           if (_currentIndex == 3) ProfileScreen(),
           // SingleChildScrollView(

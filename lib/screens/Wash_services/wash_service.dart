@@ -4,6 +4,7 @@ import '../../Widgets/category_item.dart';
 import '../../Widgets/custom_label.dart';
 import '../../Widgets/heading_six.dart';
 import '../../config/constant.dart';
+import '../Pick_up/pick_up_item_list.dart';
 import '../Product_card/product_card.dart';
 
 class WashService extends StatefulWidget {
@@ -69,7 +70,7 @@ class _WashServiceState extends State<WashService> {
                       labelRadiusSmall: 4),
                   SizedBox(height: 4.0),
                   CommonLabel(
-                      name: "\$20",
+                      name: "\₹20",
                       fontSize: 14.0,
                       fontWeight: FontWeight.w500,
                       bgColor: Colors.transparent,
@@ -136,7 +137,7 @@ class _WashServiceState extends State<WashService> {
                           style: TextStyle(fontWeight: FontWeight.bold))),
                   Padding(
                       padding: const EdgeInsets.only(left: 8.0, bottom: 8.0),
-                      child: Text('\$20.0'))
+                      child: Text('\₹20.0'))
                 ],
               ),
             ),
@@ -159,7 +160,7 @@ class _WashServiceState extends State<WashService> {
                           style: TextStyle(fontWeight: FontWeight.bold))),
                   Padding(
                       padding: const EdgeInsets.only(left: 8.0, bottom: 8.0),
-                      child: Text('\$20.0'))
+                      child: Text('\₹20.0'))
                 ],
               ),
             ),
@@ -182,7 +183,7 @@ class _WashServiceState extends State<WashService> {
                           style: TextStyle(fontWeight: FontWeight.bold))),
                   Padding(
                       padding: const EdgeInsets.only(left: 8.0, bottom: 8.0),
-                      child: Text('\$20.0'))
+                      child: Text('\₹20.0'))
                 ],
               ),
             ),
@@ -195,16 +196,31 @@ class _WashServiceState extends State<WashService> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      primary: false,
+      extendBodyBehindAppBar: true,
+      backgroundColor: Constant.bgWhite,
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        title: Text(
-          "Services",
-          style: TextStyle(
-              fontSize: 16,
-              color: Constant.globalFontCol,
-              fontWeight: FontWeight.w600),
-        ),
-      ),
+          backgroundColor: Colors.transparent,
+          title: Text(
+            "Dry Wash",
+            style: TextStyle(
+                fontSize: 16,
+                color: Constant.globalFontCol,
+                fontWeight: FontWeight.w600),
+          ),
+          actions: [
+            IconButton(
+              icon: Icon(
+                Icons.local_mall,
+                size: 22.0,
+                color: Constant.globalFontCol,
+              ),
+              onPressed: () {
+                Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => PickUpItemList()));
+              },
+            )
+          ]),
       body: Stack(
         children: [
           SizedBox(height: 48),

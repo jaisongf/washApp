@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:wash/config/constant.dart';
 
-import '../../Widgets/border_bottom.dart';
 import '../../Widgets/common_button.dart';
 import '../../Widgets/custom_label.dart';
 import '../../Widgets/heading_six.dart';
+import '../../config/constant.dart';
 
-class CustomerDetailScreen extends StatefulWidget {
-  CustomerDetailScreen({Key? key}) : super(key: key);
+class PickUpItemList extends StatefulWidget {
+  PickUpItemList({Key? key}) : super(key: key);
 
   @override
-  State<CustomerDetailScreen> createState() => _CustomerDetailScreenState();
+  State<PickUpItemList> createState() => _PickUpItemListState();
 }
 
-class _CustomerDetailScreenState extends State<CustomerDetailScreen> {
+class _PickUpItemListState extends State<PickUpItemList> {
+  @override
   final List<Map<String, String>> dataList = [
     {'label': 'Name', 'text': 'Kumar'},
     {'label': 'Contact', 'text': '+91 6292720277'},
@@ -89,7 +89,7 @@ class _CustomerDetailScreenState extends State<CustomerDetailScreen> {
                                         size: 14),
                                     const SizedBox(width: 8.0),
                                     CommonLabel(
-                                        name: "501, street name, Hyd - 600878",
+                                        name: "501, Street name, HYD",
                                         fontSize: 14.0,
                                         fontWeight: FontWeight.w500,
                                         bgColor: Colors.transparent,
@@ -156,51 +156,6 @@ class _CustomerDetailScreenState extends State<CustomerDetailScreen> {
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
                                     HeadingSix(
-                                        headingSix: "Shirt",
-                                        headingColor: Constant.globalFontCol,
-                                        heaingSize: 16,
-                                        headingWeight: FontWeight.w600),
-                                    HeadingSix(
-                                        headingSix: "1 Units = ₹50",
-                                        headingColor:
-                                            Constant.globalFontColDull,
-                                        heaingSize: 13,
-                                        headingWeight: FontWeight.w500),
-                                  ],
-                                )),
-                                Container(
-                                  child: HeadingSix(
-                                      headingSix: "100",
-                                      headingColor: Constant.globalFontCol,
-                                      heaingSize: 14,
-                                      headingWeight: FontWeight.w600),
-                                )
-                              ],
-                            ),
-                          ),
-                          const SizedBox(height: 4),
-                          Container(
-                            padding: const EdgeInsets.only(
-                                top: 12, bottom: 12, left: 16, right: 16),
-                            decoration: BoxDecoration(
-                                color: Constant.bgWhite,
-                                borderRadius: BorderRadius.circular(8.0)),
-                            child: Row(
-                              children: [
-                                CircleAvatar(
-                                    backgroundColor: Constant.customcoun,
-                                    radius: 20.0,
-                                    child: Text(
-                                      "2",
-                                      style: TextStyle(color: Constant.bgWhite),
-                                    )),
-                                SizedBox(width: 16),
-                                Expanded(
-                                    child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    HeadingSix(
                                         headingSix: "Trousers",
                                         headingColor: Constant.globalFontCol,
                                         heaingSize: 16,
@@ -219,6 +174,20 @@ class _CustomerDetailScreenState extends State<CustomerDetailScreen> {
                                       headingColor: Constant.globalFontCol,
                                       heaingSize: 14,
                                       headingWeight: FontWeight.w600),
+                                ),
+                                IconButton(
+                                  icon: const Icon(Icons.photo_camera),
+                                  iconSize: 20.0,
+                                  onPressed: () {
+                                    // Handle action
+                                  },
+                                ),
+                                IconButton(
+                                  icon: const Icon(Icons.delete),
+                                  iconSize: 20.0,
+                                  onPressed: () {
+                                    // Handle action
+                                  },
                                 ),
                               ],
                             ),
@@ -265,6 +234,79 @@ class _CustomerDetailScreenState extends State<CustomerDetailScreen> {
                                       heaingSize: 14,
                                       headingWeight: FontWeight.w600),
                                 ),
+                                IconButton(
+                                  icon: const Icon(Icons.photo_camera),
+                                  iconSize: 20.0,
+                                  onPressed: () {
+                                    // Handle action
+                                  },
+                                ),
+                                IconButton(
+                                  icon: const Icon(Icons.delete),
+                                  iconSize: 20.0,
+                                  onPressed: () {
+                                    // Handle action
+                                  },
+                                )
+                              ],
+                            ),
+                          ),
+                          const SizedBox(height: 4),
+                          Container(
+                            padding: const EdgeInsets.only(
+                                top: 12, bottom: 12, left: 16, right: 16),
+                            decoration: BoxDecoration(
+                                color: Constant.bgWhite,
+                                borderRadius: BorderRadius.circular(8.0)),
+                            child: Row(
+                              children: [
+                                CircleAvatar(
+                                    backgroundColor: Constant.customcoun,
+                                    radius: 20.0,
+                                    child: Text(
+                                      "2",
+                                      style: TextStyle(color: Constant.bgWhite),
+                                    )),
+                                SizedBox(width: 16),
+                                Expanded(
+                                    child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    HeadingSix(
+                                        headingSix: "Shirt",
+                                        headingColor: Constant.globalFontCol,
+                                        heaingSize: 16,
+                                        headingWeight: FontWeight.w600),
+                                    HeadingSix(
+                                        headingSix: "1 Units = ₹50",
+                                        headingColor:
+                                            Constant.globalFontColDull,
+                                        heaingSize: 13,
+                                        headingWeight: FontWeight.w500),
+                                  ],
+                                )),
+                                Container(
+                                  child: HeadingSix(
+                                      headingSix: "100",
+                                      headingColor: Constant.globalFontCol,
+                                      heaingSize: 14,
+                                      headingWeight: FontWeight.w600),
+                                ),
+                                IconButton(
+                                  icon: const Icon(Icons.photo_camera),
+                                  iconSize: 20.0,
+                                  onPressed: () {
+                                    // Handle action
+                                  },
+                                ),
+                                IconButton(
+                                  icon: const Icon(Icons.delete),
+                                  iconSize: 20.0,
+                                  onPressed: () {
+                                    // Handle action
+                                  },
+                                )
                               ],
                             ),
                           ),
@@ -320,7 +362,7 @@ class _CustomerDetailScreenState extends State<CustomerDetailScreen> {
         ),
         bottomNavigationBar: SizedBox(
           child: CommonButton(
-            buttonName: "Delivered",
+            buttonName: "Confirm",
             buttonColor: Color(0xff52BF83),
             buttonNameColor: Colors.white,
             buttonHeight: 54,
@@ -328,7 +370,7 @@ class _CustomerDetailScreenState extends State<CustomerDetailScreen> {
             buttonRadiusBL: 0.0,
             buttonBorder: Colors.transparent,
             buttonFunction: () {
-              Navigator.pop(context);
+              // Navigator.pop(context);
             },
           ),
         ));

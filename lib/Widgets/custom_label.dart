@@ -61,6 +61,9 @@ class CommonLabel extends StatelessWidget {
                     : Container(),
           ),
           Text(
+            maxLines: 4,
+            overflow: TextOverflow.ellipsis,
+            softWrap: true,
             name!,
             style: TextStyle(
                 fontSize: fontSize, color: fontColor, fontWeight: fontWeight),

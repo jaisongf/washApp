@@ -272,8 +272,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   CommonLabel(
-                      name: "Good Morning!, John",
-                      fontSize: 18.0,
+                      name: "Hello John",
+                      fontSize: 24.0,
                       fontWeight: FontWeight.w600,
                       bgColor: Colors.transparent,
                       fontColor: Constant.globalFontCol,
@@ -281,12 +281,12 @@ class _DashboardScreenState extends State<DashboardScreen> {
                       labelRadiusSmall: 4),
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Container(
                         child: CommonLabel(
                             name: "Today’s Jobs",
-                            fontSize: 24.0,
+                            fontSize: 18.0,
                             fontWeight: FontWeight.w600,
                             bgColor: Colors.transparent,
                             fontColor: Constant.globalFontCol,
@@ -349,7 +349,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                       child: Container(
                         padding: const EdgeInsets.only(left: 16.0),
                         child: HeadingSix(
-                          headingSix: "Delivered / Picked up orders",
+                          headingSix: "Delivered / Received orders",
                           headingColor: Constant.globalFontCol,
                           heaingSize: 16,
                           headingWeight: FontWeight.w600,
